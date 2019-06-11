@@ -1,0 +1,10 @@
+/target
+/.settings
+.project
+.classpath
+dependency-reduced-pom.xml
+*out.xml
+ocr-pdf*
+stanford-english-corenlp-2017-06-09-models.jar
+*.zip
+/tmp
