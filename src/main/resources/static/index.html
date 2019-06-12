@@ -6,7 +6,7 @@
 	<meta http-equiv="cache-control" content="no-cache" />
 	<meta http-equiv="Pragma" content="no-cache" />
 	<meta http-equiv="Expires" content="-1" />
-	<title>Color Gamut Analytics</title>
+	<title>Resume Processor</title>
 	<link rel="stylesheet" type="text/css" href="/css/style.css" />
 	<script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="/js/simpleUpload.min.js"></script>
@@ -16,56 +16,22 @@
 <body>
 
 	<header class="navbar">
-		<h2>Color Gamut Analytics ---- <a
-				href='https://eaas-tableau-production.web.boeing.com/#/signin?externalRedirect=%2Ft%2FColorGamut_Analytics%2Fviews%2FColorGamutAnalytics%2FColorGamut%3FiframeSizedToWindow%3Dtrue%26:embed%3Dy%26:showAppBanner%3Dfalse%26:display_count%3Dno%26:showVizHome%3Dno&site=ColorGamut_Analytics'
-				target="_blank">Dashboard</a>
+		<h2>Resume Processor
 		</h2>
 	</header>
 
 	<br />
 
 	<div class="main">
-		<img src="images/PointCloud.png" alt="Banner Image" />
 
 		<fieldset>
 			Extract And Store Information: <input type="file" name="file" id="uploadFile"><br />
 			<br /><br />
 			<div>
-				<button id="uploadMasterListZip" type="button">Upload Master List Zip</button>
-				<button id="uploadStl" type="button">Upload Point Cloud</button>
-				<button id="uploadColorPdf" type="button">Upload Color Pdf Zip (Coming Soon)</button>
+				<button id="uploadResume" type="button">Upload Resume</button>
 			</div>
 		</fieldset>
 
-		<fieldset>
-			<div>
-				<button id="triggerComputerdEPopup">Computer dE</button>
-				<button id="triggerDeletePopup" type="button">Delete Object</button>
-			</div>
-		</fieldset>
-
-		<div>
-			<div id="overlayComputerdE">
-				<div id="popupComputerdE">
-					<div id="closeComputerdE">X</div>
-					<h2>Modal Popup</h2>
-					STL: <select id="listOfStl"></select> <br /><br />
-					<button id="computerdE" type="button">Computer dE</button>
-				</div>
-			</div>
-		</div>
-
-		<div>
-			<div id="overlayDelete">
-				<div id="popupDelete">
-					<div id="closeDelete">X</div>
-					<h2>Modal Popup</h2>
-					Object: <select id="listOfTables"></select> <br /><br />
-					Reference: <select id="listOfReference"></select> <br /><br />
-					<button id="delete" type="button">Delete</button>
-				</div>
-			</div>
-		</div>
 		<br /> <br />
 		<div class="uploadStatus">
 			<span id="filename"></span>
