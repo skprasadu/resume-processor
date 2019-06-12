@@ -8,3 +8,4 @@ ocr-pdf*
 stanford-english-corenlp-2017-06-09-models.jar
 *.zip
 /tmp
+.springBeans
