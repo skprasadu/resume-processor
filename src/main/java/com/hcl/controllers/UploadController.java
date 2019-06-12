@@ -13,6 +13,10 @@ import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.pdfbox.cos.COSDocument;
+import org.apache.pdfbox.pdfparser.PDFParser;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.text.PDFTextStripper;
 import org.apache.poi.hwpf.extractor.WordExtractor;
 import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
@@ -51,6 +55,11 @@ public class UploadController {
 			XWPFWordExtractor extractor = new XWPFWordExtractor(doc);
 			extractedText = extractor.getText();
 			extractor.close();
+		} else if (file.getOriginalFilename().endsWith("pdf")) {
+			PDFTextStripper pdfStripper = new PDFTextStripper();
+			try (PDDocument pdDoc = PDDocument.load(file.getInputStream())) {
+				extractedText = pdfStripper.getText(pdDoc);
+			}
 		} else {
 			throw new Exception(file.getOriginalFilename() + " format not supported yet");
 		}
