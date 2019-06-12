@@ -10,4 +10,4 @@ stanford-english-corenlp-2017-06-09-models.jar
 /tmp
 .springBeans
 .DS_Store
-*.dic*
+*.doc*
