@@ -25,10 +25,12 @@ $(document).ready(function () {
 					//upload successful
 					console.log(typeof data);
 					console.log("upload successful!");
-					console.log(data);
+					//console.log(data);
 					$('.loader').css({
 						"display": "none"
 					});
+					$('.div_imagetranscrits').html('<img src="data:image/png;base64,' + data + '" />');
+
 					toggleAllButtons(false);
 
 				},
