@@ -13,8 +13,6 @@ import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.pdfbox.cos.COSDocument;
-import org.apache.pdfbox.pdfparser.PDFParser;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 import org.apache.poi.hwpf.extractor.WordExtractor;
@@ -66,7 +64,7 @@ public class UploadController {
 
 		final FrequencyAnalyzer frequencyAnalyzer = new FrequencyAnalyzer();
 		frequencyAnalyzer.setStopWords(loadStopWords());
-		frequencyAnalyzer.setWordFrequenciesToReturn(500);
+		frequencyAnalyzer.setWordFrequenciesToReturn(50);
 		frequencyAnalyzer.setMinWordLength(4);
 		System.out.println("***!!!!!" + extractedText);
 		final List<WordFrequency> wordFrequencies = frequencyAnalyzer
