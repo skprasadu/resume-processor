@@ -1,8 +1,13 @@
 $(document).ready(function () {
 	$('#uploadResume').click(function () {
-		var retVal = confirm("Do you want to upload MasterList Zip?");
+		var retVal = confirm("Do you want to upload Resume?");
 		if (retVal == true) {
 			$('input[type=file]').simpleUpload("/uploadResume", {
+
+				cache:false,
+				xhrFields:{
+					responseType: 'blob'
+				},
 
 				start: function (file) {
 					//upload started
@@ -29,7 +34,10 @@ $(document).ready(function () {
 					$('.loader').css({
 						"display": "none"
 					});
-					$('.div_imagetranscrits').html('<img src="data:image/png;base64,' + data + '" />');
+
+					var img = document.getElementById('wordCloudBlob');
+					var url = window.URL || window.webkitURL;
+					img.src = url.createObjectURL(data);
 
 					toggleAllButtons(false);
 
