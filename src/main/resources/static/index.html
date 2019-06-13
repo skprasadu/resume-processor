@@ -9,7 +9,6 @@
 	<title>Resume Processor</title>
 	<link rel="stylesheet" type="text/css" href="/css/style.css" />
 	<script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
-	<script type="text/javascript" src="/js/jquery-input-file-text.js"></script>
 	<script type="text/javascript" src="/js/simpleUpload.min.js"></script>
 	<script type="text/javascript" src="/js/main.js"></script>
 </head>
@@ -26,8 +25,10 @@
 	<div class="main">
 
 		<fieldset>
+			Extract Resume Information: <input type="file" name="file" id="uploadFile"><br />
+			<br /><br />
 			<div>
-				<input type="file" name="file" id="uploadResumeFile">
+				<button id="uploadResume" type="button">Upload Resume</button>
 			</div>
 		</fieldset>
 
@@ -42,7 +43,7 @@
 	</div>
 	<img src="" width="200" style="display:none;" />
 
-	<img id="wordCloudBlob" width="600" />
+	<img id="wordCloudBlob" width="700" />
 
 </body>
 

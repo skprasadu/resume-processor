@@ -86,7 +86,7 @@ public class UploadController {
 			wordCloud.setBackground(new RectangleBackground(dimension));
 			// colors followed by and steps between
 			wordCloud.setColorPalette(new LinearGradientColorPalette(Color.RED, Color.BLUE, Color.GREEN, 30, 30));
-			wordCloud.setFontScalar(new SqrtFontScalar(10, 40));
+			wordCloud.setFontScalar(new SqrtFontScalar(4, 100));
 			wordCloud.build(wordFrequencies);
 			wordCloud.writeToStream("png", response.getOutputStream());
 		}

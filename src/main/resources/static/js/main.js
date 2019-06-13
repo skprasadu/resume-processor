@@ -1,66 +1,72 @@
 $(document).ready(function () {
-	$('input[id="uploadResumeFile"]').change(function (e) {
+	var fileName = "";
+	$('input[type="file"]').change(function (e) {
+
 		fileName = e.target.files[0].name;
-		var retVal = confirm("Do you want to upload Resume? " + fileName);
+	});
 
-		if (retVal == true) {
-			$('input[id=uploadResumeFile]').simpleUpload("/uploadResume", {
+	$('#uploadResume').click(function () {
+		if(fileName == "") {
+			alert('please upload a file.');
+		} else {
+			var retVal = confirm("Do you want to upload Resume? " + fileName);
 
-				cache: false,
-				xhrFields: {
-					responseType: 'blob'
-				},
+			if (retVal == true) {
+				$('input[type=file]').simpleUpload("/uploadResume", {
 
-				start: function (file) {
-					//upload started
-					console.log("upload started");
-					$('#filename').html(file.name);
-					$('.loader').css({
-						"display": "block"
-					});
-					toggleAllButtons(true);
-				},
+					cache: false,
+					xhrFields: {
+						responseType: 'blob'
+					},
 
-				progress: function (progress) {
-					//received progress
-					//console.log("upload progress: " + Math.round(progress) + "%");
-					$('#progress').html("Progress: " + Math.round(progress) + "%");
-					$('#progressBar').width(progress + "%");
-				},
+					start: function (file) {
+						//upload started
+						console.log("upload started");
+						$('#filename').html(file.name);
+						$('.loader').css({
+							"display": "block"
+						});
+						toggleAllButtons(true);
+					},
 
-				success: function (data) {
-					//upload successful
-					console.log(typeof data);
-					console.log("upload successful!");
-					//console.log(data);
-					$('.loader').css({
-						"display": "none"
-					});
+					progress: function (progress) {
+						//received progress
+						//console.log("upload progress: " + Math.round(progress) + "%");
+						$('#progress').html("Progress: " + Math.round(progress) + "%");
+						$('#progressBar').width(progress + "%");
+					},
 
-					var img = document.getElementById('wordCloudBlob');
-					var url = window.URL || window.webkitURL;
-					img.src = url.createObjectURL(data);
+					success: function (data) {
+						//upload successful
+						console.log(typeof data);
+						console.log("upload successful!");
+						//console.log(data);
+						$('.loader').css({
+							"display": "none"
+						});
 
-					toggleAllButtons(false);
-					fileName = "";
-				},
+						var img = document.getElementById('wordCloudBlob');
+						var url = window.URL || window.webkitURL;
+						img.src = url.createObjectURL(data);
 
-				error: function (error) {
-					//upload failed
-					console.log("upload error: " + error.name + ": " + error.message);
-					$('#progress').html("Failure!<br>" + error.name + ": " + error.message);
-					toggleAllButtons(false);
-				}
+						toggleAllButtons(false);
+						fileName = "";
+					},
 
-			});
+					error: function (error) {
+						//upload failed
+						console.log("upload error: " + error.name + ": " + error.message);
+						$('#progress').html("Failure!<br>" + error.name + ": " + error.message);
+						toggleAllButtons(false);
+					}
+
+				});
+			}
 		}
 	});
 
-	$('#uploadResumeFile').inputFileText({
-		text: 'Upload Resume File'
-	});
-
 	function toggleAllButtons(status) {
-		document.getElementById("uploadResumeFile").disabled = status;
+		document.getElementById("uploadResume").disabled = status;
+		document.getElementById("uploadFile").disabled = status;
 	}
 });
